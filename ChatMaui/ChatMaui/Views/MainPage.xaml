@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChatMaui"
+             xmlns:sfchat="clr-namespace:Syncfusion.Maui.Chat;assembly=Syncfusion.Maui.Chat"
+              xmlns:syncTheme="clr-namespace:Syncfusion.Maui.Themes;assembly=Syncfusion.Maui.Core"
+             x:Class="ChatMaui.MainPage">
+    
+    <ContentPage.BindingContext>
+        <local:LoadMoreViewModel LoadMoreBehavior="AutoOnScroll" x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+
+
+            <sfchat:SfChat Grid.Row="1" x:Name="sfChat" CanAutoScrollToBottom="False"
+          Messages="{Binding Messages}" CurrentUser="{Binding CurrentUser}" 
+          MessageSpacing="24" MessageShape="RoundedRectangle"
+          ShowIncomingMessageAuthorName="True" ShowIncomingMessageAvatar="True" ShowIncomingMessageTimestamp="True"
+       ShowOutgoingMessageTimestamp="True"
+          IncomingMessageTimestampFormat="MM-dd-yyyy hh:mm" OutgoingMessageTimestampFormat="MM-dd-yyyy hh:mm"
+          LoadMoreCommand="{Binding LoadMoreItemsCommand}" LoadMoreBehavior="{Binding LoadMoreBehavior}" IsLazyLoading="{Binding IsBusy}">
+            </sfchat:SfChat>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
